@@ -1,7 +1,7 @@
 ## Text classification using CNN
 
 ### Background
-I have been working on various NLP related projects for a long time as part of my daily work. The work mostly revolves around data analytics, gold-standard creation, manual annotation which then leads to applying traditional methods for many Named Entity recognition tasks. These work-related activities can broadly categorized as classificaiton tasks. However, the process of manual annotation has been the most resource intensive step.
+I have been working on various NLP related projects for a long time as part of my daily work. The work mostly revolves around data analytics, gold-standard creation, manual annotation - all of the manual annotation is handled by domain experts - which then leads to applying traditional methods for many Named Entity recognition tasks. These work-related activities can broadly categorized as classificaiton tasks. However, the process of manual annotation has been the most resource intensive step.
 
 The recent developments have changed the landscape of NLP, specifically with [the release of BERT](https://github.com/google-research/bert). Although I have graduate level training in ML, this is my effort to see how I can educate myself about deeplearning. This training from JovianML has definetly helped me take a good step toward acheiving that goal.
 
@@ -74,9 +74,52 @@ class MyTabularDataset(Dataset):
         super(MyTabularDataset, self).__init__(examples, fields, **kwargs)
 ```
 
+#### The preprocessor
+
+We define instances of `Field` for our `text` and `target` that can contain the Vocabolary and their corresponding numeric representations as [detailed here](https://torchtext.readthedocs.io/en/latest/data.html#field). We will use our function `preprocess_text` to remove stop words, trim spaces, remove special characters. We perform all these steps on the text field that contain the text of the tweets
+
+
+How do we split the data, the options include subclassing the Dataset class or using the methods detailed here https://torchtext.readthedocs.io/en/latest/datasets.html
+
+```
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import sent_tokenize, word_tokenize
+def remove_stopwords(text):
+    word_tokens = word_tokenize(text) 
+    stop_words = set(stopwords.words('english'))
+    filtered_sentence = [w for w in word_tokens if not w in stop_words]           
+    return ' '.join(filtered_sentence)
+    
+# use nltk to remove stop words, remove, newlines, extra spaces, and punctuations
+from nltk.tokenize import RegexpTokenizer
+
+def preprocess_text(texts):
+    return_text = []
+    tokenizer = RegexpTokenizer(r'\w+')
+    #preprocess_pipeline = data.Pipeline(lambda x: x.decode('latin1').encode('utf8'))
+    for i, text in enumerate(texts):
+        #remove non ascii chars
+        text = ''.join(i for i in text if ord(i)<128)
+        text = remove_stopwords(text)
+        text = tokenizer.tokenize(text)
+        return_text += text
+    return_text_str = " ".join(str(x) for x in return_text)
+    # print('return_text:', return_text, type(return_text), return_text_str, type(return_text_str))
+
+    return return_text_str
+```
 
 #### The Ebeddings
 
+```
+from torchtext import vocab
+from torchtext.vocab import GloVe
+Text.build_vocab(train_data, vectors=GloVe(name='840B', dim=300))
+Label.build_vocab(train_data)
+```
+
 #### The CNN implementation
 
+The CNN architecture is ...
 
