@@ -1,0 +1,19 @@
+{
+  "id": "vkaggal/kernel2782844240",
+  "id_no": 10402869,
+  "title": "kernel2782844240",
+  "code_file": "kernel2782844240.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "gpu"
+  ],
+  "dataset_sources": [
+    "kazanova/sentiment140"
+  ],
+  "kernel_sources": [],
+  "competition_sources": []
+}
