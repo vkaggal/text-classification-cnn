@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
+## Text classification using CNN
 
-You can use the [editor on GitHub](https://github.com/vkaggal/text-classification-cnn/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### Background
+I have been working on various NLP related projects for a long time as part of my daily work. The work mostly revolves around data analytics, gold-standard creation, manual annotation which then leads to applying traditional methods for many Named Entity recognition tasks. These work-related activities can broadly categorized as classificaiton tasks. However, the process of manual annotation has been the most resource intensive step.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The recent developments have changed the landscape of NLP, specifically with [the release of BERT](https://github.com/google-research/bert). Although I have graduate level training in ML, this is my effort to see how I can educate myself about deeplearning. This training from JovianML has definetly helped me take a good step toward acheiving that goal.
 
-### Markdown
+### The Problem 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Given that I had to start somewhere and that I did not want to chew off too much, I picked sentiment analysis, a classification problem. Whew! I know have narrowed down to a topic, this is great I though until I searched for "sentiment" on [Kaggle datasets](https://www.kaggle.com/datasets?search=sentiment). I decided to go with [this dataset](https://www.kaggle.com/kazanova/sentiment140) to analyze given that it had 1.6 million examples and 2 classes (or three).
 
-```markdown
-Syntax highlighted code block
+In essense, the problem statement is to classify tweets as **negative** or **positive**
 
-# Header 1
-## Header 2
-### Header 3
+### The implementation
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/vkaggal/text-classification-cnn/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+#### The Dataloader
+#### The Ebeddings
+#### The CNN implementation
