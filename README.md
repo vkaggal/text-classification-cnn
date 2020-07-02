@@ -112,11 +112,20 @@ def preprocess_text(texts):
 
 #### The Ebeddings
 
+Its now time to represent our tokens from the tweets as numbers. This is accomplished by the embedding layer (the second code snippet below) based on the vocabolary that is built utilizing **GloVe** vector
+
+##### Build the vocabulary
 ```
 from torchtext import vocab
 from torchtext.vocab import GloVe
 Text.build_vocab(train_data, vectors=GloVe(name='840B', dim=300))
 Label.build_vocab(train_data)
+```
+
+##### Embedding layer
+
+```
+self.embedding = nn.Embedding(vocab_size, embed_size)
 ```
 
 #### The CNN implementation
