@@ -112,7 +112,7 @@ def preprocess_text(texts):
 
 #### The Ebeddings
 
-Its now time to represent our tokens from the tweets as numbers. This is accomplished by the embedding layer (the second code snippet below) based on the vocabolary that is built utilizing **GloVe** vector
+Its now time to represent our tokens from the tweets as numbers. This is accomplished by the embedding layer (the second code snippet below) based on the vocabolary that is built utilizing **GloVe** pretrained word vectors.
 
 ##### Build the vocabulary
 ```
