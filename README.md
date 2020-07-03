@@ -164,3 +164,7 @@ CNN(
   (fc2): Linear(in_features=128, out_features=5, bias=True)
 )
 ```
+
+### Work in progress
+
+This so far has been an exciting learning experience that started by chance, facilitated by **Jovian ML** and **FreeCodeCamp.org**. There is still more work here to be done, specifically, text embeddings, convolutions and text data among a lot more.
