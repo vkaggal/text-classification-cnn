@@ -1,13 +1,13 @@
-## Text classification using CNN
+## Text classification using CNN - a basic course project
 
 ### Background
-I have been working on various NLP related projects for a long time as part of my daily work. The work mostly revolves around data analytics, gold-standard creation, manual annotation - all of the manual annotation is handled by domain experts - which then leads to applying traditional methods for many Named Entity recognition tasks. These work-related activities can broadly categorized as classificaiton tasks. However, the process of manual annotation has been the most resource intensive step.
+Traditional text classification tasks involves laborious work including data extraction, gold-standard creation, manual annotation where all of the manual annotation is handled by domain experts - which then leads to applying traditional, resourse intensive methods for many Named Entity recognition tasks. These activities can broadly categorized as classificaiton tasks. However, the process of manual annotation has been the most resource intensive step.
 
 The recent developments have changed the landscape of NLP, specifically with [the release of BERT](https://github.com/google-research/bert). Although I have graduate level training in ML, this is my effort to see how I can educate myself about deeplearning. This training from JovianML has definetly helped me take a good step toward acheiving that goal.
 
 ### The Problem 
 
-Given that I had to start somewhere and that I did not want to chew off too much, I picked sentiment analysis, a classification problem. Whew! I know have narrowed down to a topic, this is great I though until I searched for "sentiment" on [Kaggle datasets](https://www.kaggle.com/datasets?search=sentiment). I decided to go with [this dataset](https://www.kaggle.com/kazanova/sentiment140) to analyze given that it had 1.6 million examples and 2 classes (or three).
+Given that I had to start somewhere and that I did not want to chew off too much, I picked sentiment analysis, a classification problem. Whew! I now have narrowed down on a topic, this is great I though until I searched for "sentiment" on [Kaggle datasets](https://www.kaggle.com/datasets?search=sentiment). After looking through a bit, I decided to go with [this dataset](https://www.kaggle.com/kazanova/sentiment140) to analyze given that it had 1.6 million examples and 2 classes (or three).
 
 In essense, the problem statement is to classify tweets as **negative** or **positive**
 
@@ -115,12 +115,22 @@ def preprocess_text(texts):
 Its now time to represent our tokens from the tweets as numbers. This is accomplished by the embedding layer (the second code snippet below) based on the vocabolary that is built utilizing **GloVe** pretrained word vectors.
 
 ##### Build the vocabulary
+Th following is an attempt to build vocabulary using *GloVe* based on the documentation [found here](https://pytorch.org/text/datasets.html). This results in an error `OSError: [Errno 28] No space left on device` on Kaggle as the instance runs out of space. I guess, that is why we just need to "attach" data? I need to spend time to understand this a bit better.
+
 ```
 from torchtext import vocab
 from torchtext.vocab import GloVe
 Text.build_vocab(train_data, vectors=GloVe(name='840B', dim=300))
 Label.build_vocab(train_data)
 ```
+
+Another attempt! The following tries to load GloVe vectors that has been attached/added to the instance on Kaggle. 
+
+```
+Text.build_vocab(train_data, vectors=GloVe(name='6B', dim=200))
+Label.build_vocab(train_data)
+```
+
 
 ##### Embedding layer
 
@@ -130,5 +140,27 @@ self.embedding = nn.Embedding(vocab_size, embed_size)
 
 #### The CNN implementation
 
-The CNN architecture is ...
+The CNN architecture that is yet being fixed is as follows:
 
+- Input Vectors
+- Embedding Layer (embedding size = 300)
+- 1D Convolutional layer
+- Max pooling layer (size = 2)
+- Activation of ReLU
+- Dropout rate of 0.5
+- Two fully connected layers (128, 5)
+
+```
+CNN(
+  (embedding): Embedding(5000, 300)
+  (convs): ModuleList(
+    (0): Conv1d(1, 128, kernel_size=(3, 300), stride=(1,))
+    (1): Conv1d(1, 128, kernel_size=(8, 300), stride=(1,))
+  )
+  (max_pool1): MaxPool1d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (relu): ReLU()
+  (dropout): Dropout(p=0.5, inplace=False)
+  (fc1): Linear(in_features=12160, out_features=128, bias=True)
+  (fc2): Linear(in_features=128, out_features=5, bias=True)
+)
+```
