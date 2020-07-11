@@ -165,6 +165,12 @@ CNN(
 )
 ```
 
+### Results
+
+```
+Validation Loss: 0.475 | Validation Acc: 77.83%
+```
+
 ### Work in progress
 
-This so far has been an exciting learning experience that started by chance, facilitated by **Jovian ML** and **FreeCodeCamp.org**. There is still more work here to be done, specifically, text embeddings, convolutions and text data among a lot more.
+This so far has been an exciting learning experience that started by chance, facilitated by **Jovian ML** and **FreeCodeCamp.org**. There is still more work here to be done, specifically, text embeddings, convolutions, RNNs, LSTM and text data among a lot more.
