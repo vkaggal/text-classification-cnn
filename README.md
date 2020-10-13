@@ -1,4 +1,4 @@
-## Text classification using CNN - a basic course project
+## Text classification using CNN - a basic  project
 
 ### Background
 Traditional text classification tasks involve laborious work including data extraction, gold-standard creation, manual annotation where all of the manual annotation is handled by domain experts - which then leads to applying traditional, resourse intensive methods for many Named Entity recognition tasks. These activities can broadly be categorized as classificaiton tasks. However, the process of manual annotation has been the most resource intensive step.
