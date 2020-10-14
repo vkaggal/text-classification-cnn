@@ -3,7 +3,7 @@
 ### Background
 Traditional text classification tasks involve laborious work including data extraction, gold-standard creation, manual annotation where all of the manual annotation is handled by domain experts - which then leads to applying traditional, resourse intensive methods for many Named Entity recognition tasks. These activities can broadly be categorized as classificaiton tasks. However, the process of manual annotation has been the most resource intensive step.
 
-The recent developments have changed the landscape of NLP, specifically with [the release of BERT](https://github.com/google-research/bert). Although I have graduate level training in ML, this is my effort to see how I can educate myself about deeplearning. This training from JovianML has definetly helped me take a good step toward acheiving that goal.
+The recent developments have changed the landscape of NLP, specifically with [the release of BERT](https://github.com/google-research/bert). Although I have graduate level training in ML, this is my effort to see how I can educate myself about deeplearning. This exercise from JovianML has definetly helped me take a good step toward acheiving that goal.
 
 ### The Problem 
 
